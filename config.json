@@ -1,0 +1,23 @@
+{
+ "min_push_pct": 70,
+ "min_feed_pct": 50,
+ "price_floor": 0,
+ "price_ceiling": 0,
+ "max_push_per_run": 8,
+ "queries_per_run": 5,
+ "amazon_min_pct": 70,
+ "sources": {
+  "desidime": true,
+  "telegram": true,
+  "reddit": true,
+  "amazon": true,
+  "flipkart": true
+ },
+ "telegram_channels": [
+  "desidimeHot",
+  "desidime",
+  "TodayPriceDrop",
+  "dealbee",
+  "idoffers"
+ ]
+}

@@ -1,0 +1,6 @@
+__pycache__/
+.pytest_cache/
+*.pyc
+data/
+*.json.key
+service-account*.json

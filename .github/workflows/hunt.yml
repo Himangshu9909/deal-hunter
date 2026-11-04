@@ -1,0 +1,52 @@
+name: hunt
+
+# Runs every 10 minutes (GitHub may delay a run by a few minutes at busy times; 5 min is the minimum it allows).
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hunt
+  cancel-in-progress: false
+
+jobs:
+  hunt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      # state.json / deals.json / status.json live on a throw-away "data" branch (one commit, force-pushed),
+      # so the main branch history stays clean and the repo never grows.
+      - name: Load previous data
+        run: |
+          mkdir -p data
+          if git fetch --depth=1 origin data 2>/dev/null; then git archive FETCH_HEAD | tar -x -C data; fi
+          ls -la data || true
+
+      - name: Hunt
+        env:
+          FCM_SERVICE_ACCOUNT: ${{ secrets.FCM_SERVICE_ACCOUNT }}
+          FIREBASE_PROJECT_ID: ${{ vars.FIREBASE_PROJECT_ID }}
+        run: python -m dealhunter.main --data-dir data --config config.json
+
+      - name: Publish data
+        run: |
+          cd data
+          git init -q -b data
+          git config user.name "dealhunter-bot"
+          git config user.email "dealhunter-bot@users.noreply.github.com"
+          git add -A
+          git commit -q -m "data $(date -u +%FT%TZ)"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" data
