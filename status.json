@@ -1,0 +1,38 @@
+{
+ "run_at": 1794058853,
+ "sources": {
+  "desidime": {
+   "ok": true,
+   "deals": 40,
+   "secs": 3.9
+  },
+  "telegram": {
+   "ok": true,
+   "deals": 57,
+   "secs": 3.2
+  },
+  "reddit": {
+   "ok": true,
+   "deals": 3,
+   "secs": 0.5
+  },
+  "amazon": {
+   "ok": true,
+   "deals": 0,
+   "secs": 35.3
+  },
+  "flipkart": {
+   "ok": true,
+   "deals": 194,
+   "secs": 6.0
+  }
+ },
+ "scraped": 253,
+ "feed_candidates": 183,
+ "push_candidates": 46,
+ "pushed": 8,
+ "overflow": 2,
+ "fcm_configured": true,
+ "dry_run": false,
+ "watch_sent": 0
+}
