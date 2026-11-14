@@ -1,0 +1,38 @@
+{
+ "run_at": 1794657161,
+ "sources": {
+  "desidime": {
+   "ok": true,
+   "deals": 40,
+   "secs": 2.6
+  },
+  "telegram": {
+   "ok": true,
+   "deals": 65,
+   "secs": 1.8
+  },
+  "reddit": {
+   "ok": false,
+   "error": "RuntimeError: reddit HTTP 429",
+   "secs": 7.5
+  },
+  "amazon": {
+   "ok": false,
+   "error": "RuntimeError: amazon blocked/failed for all queries",
+   "secs": 42.4
+  },
+  "flipkart": {
+   "ok": true,
+   "deals": 179,
+   "secs": 6.1
+  }
+ },
+ "scraped": 236,
+ "feed_candidates": 146,
+ "push_candidates": 42,
+ "pushed": 8,
+ "overflow": 6,
+ "fcm_configured": true,
+ "dry_run": false,
+ "watch_sent": 0
+}
