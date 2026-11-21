@@ -1,0 +1,38 @@
+{
+ "run_at": 1795260930,
+ "sources": {
+  "desidime": {
+   "ok": false,
+   "error": "RuntimeError: desidime /deals?order_by=new -> HTTP 403",
+   "secs": 0.1
+  },
+  "telegram": {
+   "ok": true,
+   "deals": 65,
+   "secs": 2.9
+  },
+  "reddit": {
+   "ok": false,
+   "error": "RuntimeError: reddit HTTP 404",
+   "secs": 0.1
+  },
+  "amazon": {
+   "ok": true,
+   "deals": 0,
+   "secs": 3.2
+  },
+  "flipkart": {
+   "ok": true,
+   "deals": 195,
+   "secs": 6.2
+  }
+ },
+ "scraped": 227,
+ "feed_candidates": 191,
+ "push_candidates": 71,
+ "pushed": 8,
+ "overflow": 12,
+ "fcm_configured": true,
+ "dry_run": false,
+ "watch_sent": 0
+}
